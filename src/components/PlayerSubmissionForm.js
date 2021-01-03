@@ -4,9 +4,11 @@ import PropTypes from 'prop-types';
 import './PlayerSubmissionForm.css';
 
 const PlayerSubmissionForm = () => {
+  const [playerCount, setPlayerCount] = useState(1)
+
   return (
     <div className="PlayerSubmissionForm">
-      <h3>Player Submission Form for Player #{  }</h3>
+      <h3>Player Submission Form for Player #{ playerCount }</h3>
 
       <form className="PlayerSubmissionForm__form" >
 
@@ -15,9 +17,32 @@ const PlayerSubmissionForm = () => {
           {
             // Put your form inputs here... We've put in one below as an example
           }
+          <p>The</p>
           <input
-            placeholder="hm..."
-            type="text" />
+            placeholder="adjective"
+            type="text" 
+          />
+          <input
+            placeholder='noun'
+            type='text'
+          />
+          <input 
+            placeholder='adverb'
+            type='text'
+          />
+          <input 
+            placeholder='verb'
+            type='text'
+          />
+          <p>the</p>
+          <input 
+            placeholder='adjective'
+            type='text'
+          />
+          <input 
+            placeholder='noun'
+            type='text'
+          />
 
         </div>
 
