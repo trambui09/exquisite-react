@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 
 import './PlayerSubmissionForm.css';
 
-const PlayerSubmissionForm = () => {
-  const [playerCount, setPlayerCount] = useState(1)
+const PlayerSubmissionForm = (props) => {
   const [fields, setFields] = useState({
     'adj1': '',
     'noun1': '',
@@ -26,19 +25,13 @@ const PlayerSubmissionForm = () => {
 
   }
 
-  const onFormSubmit = () => {
+  const onFormSubmit = (event) => {
+    event.preventDefault();
+    // // sends the state up to the game
+    props.sendSubmission(fields);
+    // // with a callback func
    
-    // sends the state up to the game
-    // with a callback func
-
-    console.log(fields)
-
-    // increment the playerCount by 1 
-    setPlayerCount(playerCount + 1)
-
-
-
-    // clear the text fields 
+    // // clear the text fields 
     setFields({
       'adj1': '',
       'noun1': '',
@@ -48,12 +41,13 @@ const PlayerSubmissionForm = () => {
       'noun2': ''
     })
 
+
   
   }
 
   return (
     <div className="PlayerSubmissionForm">
-      <h3>Player Submission Form for Player #{ playerCount }</h3>
+      <h3>Player Submission Form for Player #{ props.index}</h3>
 
       <form className="PlayerSubmissionForm__form" onSubmit={onFormSubmit} >
 

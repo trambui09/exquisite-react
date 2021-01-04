@@ -13,6 +13,85 @@ const Game = () => {
     }
   }).join(' ');
 
+  const [index, setIndex] = useState(1)
+  // const [fields, setFields] = useState({
+  //   'adj1': '',
+  //   'noun1': '',
+  //   'adv': '',
+  //   'verb': '',
+  //   'adj2': '',
+  //   'noun2': ''
+  // })
+
+  const [fields, setFields] = useState([
+    'The',
+    {
+      key: 'adj1',
+      placeholder: '',
+    },
+    {
+      key: 'noun1',
+      placeholder: '',
+    },
+    {
+      key: 'adv',
+      placeholder: '',
+    },
+    {
+      key: 'verb',
+      placeholder: '',
+    },
+    'the',
+    {
+      key: 'adj2',
+      placeholder: '',
+    },
+    {
+      key: 'noun2',
+      placeholder: '',
+    },
+    '.',
+  ])
+
+  // is it supposed to be array or an object?
+  // I think an array with Strings and objects!
+
+  // need to figure out the logic of this 
+  // result is an object 
+  const sendSubmission = (results) => {
+    console.log(results)
+
+    // const newFields = [...fields]
+
+    const newFields = fields.map((field) => {
+      if (`${field.key}` in results) {
+        return field.placeholder = results[`${field.key}`];
+      } else {
+        return field;
+      }
+    })
+
+    setIndex(index + 1)
+
+    setFields(newFields)
+    console.log(fields)
+
+    const boop = fields.map((field) => {
+      if (field.key) {
+        return field.placeholder;
+      } else {
+        return field;
+      }
+    }).join(' ');
+
+    console.log(boop)
+
+    
+
+  }
+
+
+
   return (
     <div className="Game">
       <h2>Game</h2>
@@ -27,7 +106,7 @@ const Game = () => {
 
       <RecentSubmission />
 
-      <PlayerSubmissionForm />
+      <PlayerSubmissionForm index={index} sendSubmission={sendSubmission} fields={fields}/>
 
       <FinalPoem />
 
