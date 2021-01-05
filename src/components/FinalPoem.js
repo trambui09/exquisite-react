@@ -14,11 +14,15 @@ const FinalPoem = (props) => {
 
   }
 
+  const lines = props.submissions.map(line => 
+    <li>{line}</li>
+  )
+
   return (
     <div className="FinalPoem">
       <section className="FinalPoem__poem">
         <h3>Final Poem</h3>
-        <p>{props.submissions}</p>
+        <ul className="FinalPoem__poem--list">{lines}</ul>
 
       </section>
 
