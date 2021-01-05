@@ -14,6 +14,7 @@ const PlayerSubmissionForm = (props) => {
   });
 
   const onInputChange = (event) => {
+    debugger;
     const {name, value} = event.target
 
     const newFields = {
@@ -100,6 +101,7 @@ const PlayerSubmissionForm = (props) => {
             value={fields.noun2}
             onChange={onInputChange}
           />
+          <p>.</p>
 
         </div>
 
