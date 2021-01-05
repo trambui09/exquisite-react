@@ -28,7 +28,6 @@ const PlayerSubmissionForm = (props) => {
   const onFormSubmit = (event) => {
     event.preventDefault();
     // // sends the state up to the game
-    debugger;
     props.sendSubmission(fields);
     // // with a callback func
    

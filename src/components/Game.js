@@ -14,16 +14,8 @@ const Game = () => {
   }).join(' ');
 
   const [index, setIndex] = useState(1)
-  // const [fields, setFields] = useState({
-  //   'adj1': '',
-  //   'noun1': '',
-  //   'adv': '',
-  //   'verb': '',
-  //   'adj2': '',
-  //   'noun2': ''
-  // })
-
   const [poems, setPoems] = useState([])
+  const [isSubmitted, setIsSubmitted] = useState(false)
 
   const [fields, setFields] = useState([
     'The',
@@ -111,6 +103,11 @@ const Game = () => {
 
   }
 
+  const revealPoem = () => {
+    setIsSubmitted(true)
+
+  }
+
 
 
   return (
@@ -130,7 +127,7 @@ const Game = () => {
 
       <PlayerSubmissionForm index={index} sendSubmission={sendSubmission} fields={fields}/>
 
-      <FinalPoem />
+      <FinalPoem isSubmitted={false} submissions={poems} revealPoem={revealPoem} />
 
     </div>
   );
