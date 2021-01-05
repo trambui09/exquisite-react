@@ -6,29 +6,35 @@ const FinalPoem = (props) => {
 
   const onFinalSubmit = (event) => {
     event.preventDefault();
-
+    // callback function to be passed up to the game comp
     props.revealPoem();
-
-
-
-
   }
 
   const lines = props.submissions.map(line => 
     <li className="FinalPoem__poem--listitems">{line}</li>
   )
 
+  const hideRevealPoemBtn = () => {
+    if (props.isSubmitted) {
+      return (
+        <section className="FinalPoem__poem">
+          <h3>Final Poem</h3>
+          <ul className="FinalPoem__poem--list">{lines}</ul>
+      </section>
+      )
+
+    } else {
+      return (
+        <div className="FinalPoem__reveal-btn-container">
+          <input onClick={onFinalSubmit} type="button" value="We are finished: Reveal the Poem" className="FinalPoem__reveal-btn" />
+        </div>
+      )
+    }
+  }
+
   return (
     <div className="FinalPoem">
-      <section className="FinalPoem__poem">
-        <h3>Final Poem</h3>
-        <ul className="FinalPoem__poem--list">{lines}</ul>
-
-      </section>
-
-      <div className="FinalPoem__reveal-btn-container">
-        <input onSubmit={onFinalSubmit} type="button" value="We are finished: Reveal the Poem" className="FinalPoem__reveal-btn" />
-      </div>
+      {hideRevealPoemBtn()}
     </div>
   );
 }

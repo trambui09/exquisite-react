@@ -104,10 +104,23 @@ const Game = () => {
   }
 
   const revealPoem = () => {
-    setIsSubmitted(true)
-
+    setIsSubmitted(!isSubmitted)
   }
 
+  // condtionally rendering of coomponents based on isSubmitted 
+
+  const showOrHide = () => {
+    if (isSubmitted) {
+      return (
+        <FinalPoem isSubmitted={isSubmitted} submissions={poems} revealPoem={revealPoem} /> 
+      )
+    } else {
+      return ([
+      <RecentSubmission submission={poems[poems.length - 1]} />,
+      <PlayerSubmissionForm index={index} sendSubmission={sendSubmission} fields={fields}/>,
+      <FinalPoem isSubmitted={isSubmitted} submissions={poems} revealPoem={revealPoem} /> 
+    ])}
+  }
 
 
   return (
@@ -121,13 +134,10 @@ const Game = () => {
       <p className="Game__format-example">
         { exampleFormat }
       </p>
-
-
-      <RecentSubmission submission={poems[poems.length - 1]} />
-
+      {/* <RecentSubmission submission={poems[poems.length - 1]} />
       <PlayerSubmissionForm index={index} sendSubmission={sendSubmission} fields={fields}/>
-
-      <FinalPoem isSubmitted={false} submissions={poems} revealPoem={revealPoem} />
+      <FinalPoem isSubmitted={isSubmitted} submissions={poems} revealPoem={revealPoem} />  */}
+      {showOrHide()}
 
     </div>
   );
