@@ -23,3 +23,7 @@
 .FinalPoem__poem .FinalPoem__poem--list {
   list-style-type: none;
 }
+
+.FinalPoem__poem--listitems {
+  margin-bottom: 15px;
+}

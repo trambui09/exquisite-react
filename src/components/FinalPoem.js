@@ -15,7 +15,7 @@ const FinalPoem = (props) => {
   }
 
   const lines = props.submissions.map(line => 
-    <li>{line}</li>
+    <li className="FinalPoem__poem--listitems">{line}</li>
   )
 
   return (
