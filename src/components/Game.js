@@ -23,6 +23,8 @@ const Game = () => {
   //   'noun2': ''
   // })
 
+  const [poems, setPoems] = useState([])
+
   const [fields, setFields] = useState([
     'The',
     {
@@ -74,17 +76,36 @@ const Game = () => {
     setIndex(index + 1)
 
     setFields(newFields)
-    console.log(fields)
-
-    const boop = fields.map((field) => {
-      if (field.key) {
-        return field.placeholder;
-      } else {
-        return field;
-      }
-    }).join(' ');
-
-    console.log(boop)
+    setPoems([...poems, newFields.join(' ') ])
+    setFields([
+    'The',
+    {
+      key: 'adj1',
+      placeholder: '',
+    },
+    {
+      key: 'noun1',
+      placeholder: '',
+    },
+    {
+      key: 'adv',
+      placeholder: '',
+    },
+    {
+      key: 'verb',
+      placeholder: '',
+    },
+    'the',
+    {
+      key: 'adj2',
+      placeholder: '',
+    },
+    {
+      key: 'noun2',
+      placeholder: '',
+    },
+    '.',
+    ])
 
     
 
@@ -104,7 +125,8 @@ const Game = () => {
         { exampleFormat }
       </p>
 
-      <RecentSubmission />
+
+      <RecentSubmission submission={poems[poems.length - 1]} />
 
       <PlayerSubmissionForm index={index} sendSubmission={sendSubmission} fields={fields}/>
 
