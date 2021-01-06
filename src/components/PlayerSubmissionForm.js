@@ -43,33 +43,9 @@ const PlayerSubmissionForm = (props) => {
     })
   }
 
-  // draft in order to DRY up the code ...
-  // needs refinement 
-  const validInput = () => {
-    const {adj1, noun1, adv, verb, adj2, noun2} = fields
-    return adj1 === '' || noun1 === '' || adv === '' || verb === '' || adj2 === '' || noun2 === ''
-
-    // if any of the fields keys are empty
+  const validateInput = (field) => {
+    return field !== ''
   }
-
-  // TODO: DRY up this code
-
-  const validAdjective1 = () => {
-    const {adj1} = fields
-    return adj1 === ''
-  }
-
-  const validNoun1 = () => {
-    const {noun1} = fields
-    return noun1 === ''
-  }
-
-  const validAdverb = () => {
-    const {adv} = fields
-    return adv === ''
-  }
-
-
 
   return (
     <div className="PlayerSubmissionForm">
@@ -89,7 +65,7 @@ const PlayerSubmissionForm = (props) => {
             name='adj1'
             value={fields.adj1}
             onChange={onInputChange}
-            className={validAdjective1() ? 'PlayerSubmissionFormt__input--invalid' : 'PlayerSubmissionFormt__input--valid' }
+            className={validateInput(fields.adj1) ? 'PlayerSubmissionFormt__input--valid' : 'PlayerSubmissionFormt__input--invalid' }
           />
           <input
             placeholder='noun1'
@@ -97,7 +73,7 @@ const PlayerSubmissionForm = (props) => {
             name='noun1'
             value={fields.noun1}
             onChange={onInputChange}
-            className={validNoun1() ? 'PlayerSubmissionFormt__input--invalid' : 'PlayerSubmissionFormt__input--valid'}
+            className={validateInput(fields.noun1) ? 'PlayerSubmissionFormt__input--valid' : 'PlayerSubmissionFormt__input--invalid' }
           />
           <input 
             placeholder='adverb1'
@@ -105,7 +81,7 @@ const PlayerSubmissionForm = (props) => {
             name='adv'
             value={fields.adv}
             onChange={onInputChange}
-            className={validAdverb() ? 'PlayerSubmissionFormt__input--invalid' : 'PlayerSubmissionFormt__input--valid'}
+            className={validateInput(fields.adv) ? 'PlayerSubmissionFormt__input--valid' : 'PlayerSubmissionFormt__input--invalid' }
           />
           <input 
             placeholder='verb1'
@@ -113,7 +89,7 @@ const PlayerSubmissionForm = (props) => {
             name='verb'
             value={fields.verb}
             onChange={onInputChange}
-            className={validInput() ? 'PlayerSubmissionFormt__input--invalid' : 'PlayerSubmissionFormt__input--valid'}
+            className={validateInput(fields.verb) ? 'PlayerSubmissionFormt__input--valid' : 'PlayerSubmissionFormt__input--invalid' }
           />
           <p>the</p>
           <input 
@@ -122,7 +98,7 @@ const PlayerSubmissionForm = (props) => {
             name='adj2'
             value={fields.adj2}
             onChange={onInputChange}
-            className={validInput() ? 'PlayerSubmissionFormt__input--invalid' : 'PlayerSubmissionFormt__input--valid'}
+            className={validateInput(fields.adj2) ? 'PlayerSubmissionFormt__input--valid' : 'PlayerSubmissionFormt__input--invalid' }
           />
           <input 
             placeholder='noun2'
@@ -130,7 +106,7 @@ const PlayerSubmissionForm = (props) => {
             name='noun2'
             value={fields.noun2}
             onChange={onInputChange}
-            className={validInput() ? 'PlayerSubmissionFormt__input--invalid' : 'PlayerSubmissionFormt__input--valid'}
+            className={validateInput(fields.noun2) ? 'PlayerSubmissionFormt__input--valid' : 'PlayerSubmissionFormt__input--invalid' }
           />
           <p>.</p>
 
