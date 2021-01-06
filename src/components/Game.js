@@ -17,35 +17,35 @@ const Game = () => {
   const [poems, setPoems] = useState([])
   const [isSubmitted, setIsSubmitted] = useState(false)
 
-  const [fields, setFields] = useState([
-    'The',
-    {
-      key: 'adj1',
-      placeholder: '',
-    },
-    {
-      key: 'noun1',
-      placeholder: '',
-    },
-    {
-      key: 'adv',
-      placeholder: '',
-    },
-    {
-      key: 'verb',
-      placeholder: '',
-    },
-    'the',
-    {
-      key: 'adj2',
-      placeholder: '',
-    },
-    {
-      key: 'noun2',
-      placeholder: '',
-    },
-    '.',
-  ])
+  // const [fields, setFields] = useState([
+  //   'The',
+  //   {
+  //     key: 'adj1',
+  //     placeholder: '',
+  //   },
+  //   {
+  //     key: 'noun1',
+  //     placeholder: '',
+  //   },
+  //   {
+  //     key: 'adv',
+  //     placeholder: '',
+  //   },
+  //   {
+  //     key: 'verb',
+  //     placeholder: '',
+  //   },
+  //   'the',
+  //   {
+  //     key: 'adj2',
+  //     placeholder: '',
+  //   },
+  //   {
+  //     key: 'noun2',
+  //     placeholder: '',
+  //   },
+  //   '.',
+  // ])
 
   // is it supposed to be array or an object?
   // I think an array with Strings and objects!
@@ -53,13 +53,12 @@ const Game = () => {
   // need to figure out the logic of this 
   // result is an object 
   const sendSubmission = (results) => {
-    console.log(results)
 
     // const newFields = [...fields]
 
-    const newFields = fields.map((field) => {
+    const newFields = FIELDS.map((field) => {
       if (`${field.key}` in results) {
-        return field.placeholder = results[`${field.key}`];
+        return results[`${field.key}`];
       } else {
         return field;
       }
@@ -67,37 +66,37 @@ const Game = () => {
 
     setIndex(index + 1)
 
-    setFields(newFields)
+    // setFields(newFields)
     setPoems([...poems, newFields.join(' ') ])
-    setFields([
-    'The',
-    {
-      key: 'adj1',
-      placeholder: '',
-    },
-    {
-      key: 'noun1',
-      placeholder: '',
-    },
-    {
-      key: 'adv',
-      placeholder: '',
-    },
-    {
-      key: 'verb',
-      placeholder: '',
-    },
-    'the',
-    {
-      key: 'adj2',
-      placeholder: '',
-    },
-    {
-      key: 'noun2',
-      placeholder: '',
-    },
-    '.',
-    ])
+    // setFields([
+    // 'The',
+    // {
+    //   key: 'adj1',
+    //   placeholder: '',
+    // },
+    // {
+    //   key: 'noun1',
+    //   placeholder: '',
+    // },
+    // {
+    //   key: 'adv',
+    //   placeholder: '',
+    // },
+    // {
+    //   key: 'verb',
+    //   placeholder: '',
+    // },
+    // 'the',
+    // {
+    //   key: 'adj2',
+    //   placeholder: '',
+    // },
+    // {
+    //   key: 'noun2',
+    //   placeholder: '',
+    // },
+    // '.',
+    // ])
 
     
 
@@ -115,11 +114,11 @@ const Game = () => {
         <FinalPoem isSubmitted={isSubmitted} submissions={poems} revealPoem={revealPoem} /> 
       )
     } else {
-      return ([
-      <RecentSubmission submission={poems[poems.length - 1]} />,
-      <PlayerSubmissionForm index={index} sendSubmission={sendSubmission} fields={fields}/>,
+      return (<>
+      <RecentSubmission submission={poems[poems.length - 1]} />
+      <PlayerSubmissionForm index={index} sendSubmission={sendSubmission} fields={FIELDS}/>
       <FinalPoem isSubmitted={isSubmitted} submissions={poems} revealPoem={revealPoem} /> 
-    ])}
+    </>)}
   }
 
 
