@@ -64,7 +64,7 @@ const PlayerSubmissionForm = (props) => {
           }
           <p>The</p>
           <input
-            placeholder="adjective"
+            placeholder="adjective1"
             type="text" 
             name='adj1'
             value={fields.adj1}
@@ -72,7 +72,7 @@ const PlayerSubmissionForm = (props) => {
             className={validInput() ? 'PlayerSubmissionFormt__input--invalid' : 'PlayerSubmissionFormt__input--valid' }
           />
           <input
-            placeholder='noun'
+            placeholder='noun1'
             type='text'
             name='noun1'
             value={fields.noun1}
@@ -80,7 +80,7 @@ const PlayerSubmissionForm = (props) => {
             className={validInput() ? 'PlayerSubmissionFormt__input--invalid' : 'PlayerSubmissionFormt__input--valid'}
           />
           <input 
-            placeholder='adverb'
+            placeholder='adverb1'
             type='text'
             name='adv'
             value={fields.adv}
@@ -88,7 +88,7 @@ const PlayerSubmissionForm = (props) => {
             className={validInput() ? 'PlayerSubmissionFormt__input--invalid' : 'PlayerSubmissionFormt__input--valid'}
           />
           <input 
-            placeholder='verb'
+            placeholder='verb1'
             type='text'
             name='verb'
             value={fields.verb}
@@ -97,7 +97,7 @@ const PlayerSubmissionForm = (props) => {
           />
           <p>the</p>
           <input 
-            placeholder='adjective'
+            placeholder='adjective2'
             type='text'
             name='adj2'
             value={fields.adj2}
@@ -105,7 +105,7 @@ const PlayerSubmissionForm = (props) => {
             className={validInput() ? 'PlayerSubmissionFormt__input--invalid' : 'PlayerSubmissionFormt__input--valid'}
           />
           <input 
-            placeholder='noun'
+            placeholder='noun2'
             type='text'
             name='noun2'
             value={fields.noun2}
