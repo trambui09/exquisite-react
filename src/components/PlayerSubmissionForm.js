@@ -53,10 +53,6 @@ const PlayerSubmissionForm = (props) => {
       <form className="PlayerSubmissionForm__form" onSubmit={onFormSubmit} >
 
         <div className="PlayerSubmissionForm__poem-inputs">
-
-          {
-            // Put your form inputs here... We've put in one below as an example
-          }
           <p>The</p>
           <input
             placeholder="adjective"
