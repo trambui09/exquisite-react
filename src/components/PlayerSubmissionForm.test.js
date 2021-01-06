@@ -3,6 +3,7 @@ import '@testing-library/jest-dom/extend-expect';
 import { render, screen, cleanup } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import PlayerSubmissionForm from './PlayerSubmissionForm';
+import { FIELDS } from './Game';
 
 describe('Wave 1:  PlayerSubmissionForm', () => {
   // Arrange
@@ -42,8 +43,8 @@ describe('Wave 1:  PlayerSubmissionForm', () => {
 
     // Assert
     inputFields.forEach(field => {
-      const regex = new RegExp('^' + field.placeholder + '$', 'i');
-      const inputField = screen.getByPlaceholderText(regex);
+      const regex = new RegExp('^' + field.key + '$', 'i');
+      const inputField = screen.getByTestId(regex);
       expect(inputField).toBeInTheDocument();
     });
   });
@@ -64,8 +65,8 @@ describe('Wave 1:  PlayerSubmissionForm', () => {
     // Assert
     inputFields.forEach(async field => {
       // Find the input field
-      const regex = new RegExp('^' + field.placeholder + '$', 'i');
-      const inputField = screen.getByPlaceholderText(regex)
+      const regex = new RegExp('^' + field.key + '$', 'i');
+      const inputField = screen.getByTestId(regex)
 
       // Type in that input field
       userEvent.type(inputField, letters.charAt(index));
