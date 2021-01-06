@@ -43,13 +43,33 @@ const PlayerSubmissionForm = (props) => {
     })
   }
 
-  // need tp work on this can dry it up 
+  // draft in order to DRY up the code ...
+  // needs refinement 
   const validInput = () => {
     const {adj1, noun1, adv, verb, adj2, noun2} = fields
     return adj1 === '' || noun1 === '' || adv === '' || verb === '' || adj2 === '' || noun2 === ''
 
     // if any of the fields keys are empty
   }
+
+  // TODO: DRY up this code
+
+  const validAdjective1 = () => {
+    const {adj1} = fields
+    return adj1 === ''
+  }
+
+  const validNoun1 = () => {
+    const {noun1} = fields
+    return noun1 === ''
+  }
+
+  const validAdverb = () => {
+    const {adv} = fields
+    return adv === ''
+  }
+
+
 
   return (
     <div className="PlayerSubmissionForm">
@@ -69,7 +89,7 @@ const PlayerSubmissionForm = (props) => {
             name='adj1'
             value={fields.adj1}
             onChange={onInputChange}
-            className={validInput() ? 'PlayerSubmissionFormt__input--invalid' : 'PlayerSubmissionFormt__input--valid' }
+            className={validAdjective1() ? 'PlayerSubmissionFormt__input--invalid' : 'PlayerSubmissionFormt__input--valid' }
           />
           <input
             placeholder='noun1'
@@ -77,7 +97,7 @@ const PlayerSubmissionForm = (props) => {
             name='noun1'
             value={fields.noun1}
             onChange={onInputChange}
-            className={validInput() ? 'PlayerSubmissionFormt__input--invalid' : 'PlayerSubmissionFormt__input--valid'}
+            className={validNoun1() ? 'PlayerSubmissionFormt__input--invalid' : 'PlayerSubmissionFormt__input--valid'}
           />
           <input 
             placeholder='adverb1'
@@ -85,7 +105,7 @@ const PlayerSubmissionForm = (props) => {
             name='adv'
             value={fields.adv}
             onChange={onInputChange}
-            className={validInput() ? 'PlayerSubmissionFormt__input--invalid' : 'PlayerSubmissionFormt__input--valid'}
+            className={validAdverb() ? 'PlayerSubmissionFormt__input--invalid' : 'PlayerSubmissionFormt__input--valid'}
           />
           <input 
             placeholder='verb1'
